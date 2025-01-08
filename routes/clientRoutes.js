@@ -17,5 +17,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+// GET route to fetch all clients
+router.get("/getClients", async (req, res) => {
+  try {
+    const clients = await Client.find(); // Correctly fetch all records from the 'Client' collection
+    if (clients.length === 0) {
+      return res.status(404).json({ message: "No clients found" });
+    }
+     return res.status(200).json(clients);
+  } catch (error) {
+    console.error("Error fetching clients:", error);
+    res.status(500).json({ message: "Error fetching clients", error: error.message });
+  }
+});
+
+
 // Export the router
 module.exports = router;
