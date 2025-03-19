@@ -14,7 +14,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-    origin: "https://final-proposal-order-frontend.vercel.app",
+    origin: ['https://final-proposal-order-frontend.vercel.app', 'http://localhost:3000'],
     credentials: true,
 }));
 app.use(session({
